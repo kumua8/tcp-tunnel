@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  tcp-tunnel:
+    container_name: tcp-tunnel
+    image: archlinux:latest
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ${PWD}:/app
+    working_dir: /app
+    command: /app/tunnel
+    logging:
+      driver: json-file
+      options:
+        max-size: 1m
